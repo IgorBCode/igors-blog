@@ -1,0 +1,52 @@
+{% include "header.html" %}
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url({{ url_for('static', filename='img/about-bg.jpg')}})">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>About Me</h1>
+            <span class="subheading">This is what I do.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <h2>Hi I'm Igor</h2>
+        <p>I'm a computer science major at Washington State University. I'm starting my Junior year in August and I'm happy to say I'm not sick of computers yet. I'm actually more excited about software developement than when I first started.</p>
+
+        <p>At WSU I have learned C++, data structures and algorithms. On my free time I have learned how to use Python and JavaScript. In Python I have learned and created applications using the following  tools:</p>
+        <ul>
+          <li>Web scraping with Beautiful Soup</li>
+          <li>Connecting apps with various API's</li>
+          <li>Tkinter to create GUI interfaces</li>
+          <li>Flask for creating web servers (and the backend of this website)</li>
+          <li>Flask SQLAlchemy to manage data for web app data</li>
+          <li>Pandas library to work with CSV data</li>
+          <li>Selenium webdriver to create web bots</li>
+          <li>and much more!</li>
+        </ul>
+        <p>I have also been learning as much as I can about JavaScript and web developement. Besides JS and HTML/CSS basics I've also learned:</p>
+        <ul>
+          <li>DOM Manipulation</li>
+          <li>Node.js</li>
+          <li>React.js</li>
+          <li>JQuery</li>
+          <li>Creating a RESTful API from scratch</li>
+          <li>Mongo DB and Mongoose</li>
+        </ul>
+        <p>I'm still learning how to do more with these languages and I'm exited to find out what other things I am able to create. I have included my blogs that goes into detail about all the things I learned. Hope you enjoy the blogs/website. Have a great day, and thanks for stopping by!</p>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  {% include "footer.html" %}
