@@ -25,7 +25,7 @@
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         <p>Want to get in touch? Fill out the form below to send me a message and I will get back to you as soon as possible!</p>
-        <form action="{{url_for('contact')}} id="contactForm" method="post">
+        <form action="{{url_for('contact')}} id="contactForm" name="emailForm" method="post">
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
               <label>Name</label>
@@ -55,8 +55,7 @@
             </div>
           </div>
           <br>
-          <div id="success"></div>
-          <button type="submit" class="btn btn-primary" id="sendMessageButton">Send</button>
+          <button type="submit" class="btn btn-primary" id="submitBtn">Send</button>
         </form>
       </div>
     </div>
