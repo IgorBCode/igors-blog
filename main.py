@@ -239,7 +239,8 @@ def contact():
         phone = request.get('phone')
         message = phone = request.get('message')
         send_email(data["name"], data["email"], data["phone"], data["message"])
-        return render_template('contact.html', email_sent=True)
+        return redirect(url_for('contact', email_set=True))
+        # return render_template('contact.html', email_sent=True)
     return render_template('contact.html', email_sent=False)
 
 def send_email(name, email, phone, message):
