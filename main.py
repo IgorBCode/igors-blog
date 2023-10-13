@@ -241,10 +241,10 @@ def contact():
 
 def send_email(name, email, phone, message):
     email_msg = f"Subject: New Message\n\nName: {name}\nEmail: {email}\nPhone: {phone}\nMessage: {message}"
-    with smtplib.SMTP("smtp.gmail.com") as connection:
+    with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
         connection.starttls()
         connection.login(os.environ.get('EMAIL_ADDY'), os.environ.get('EMAIL_PASS'))
-        connection.sendmail(os.environ.get('EMAIL_ADDY'), os.environ.get('EMAIL_ADDY'), email_msg)
+        connection.sendmail(from_addr=os.environ.get('EMAIL_ADDY'), to_addr=os.environ.get('EMAIL_ADDY'), msg=email_msg)
 
 if __name__ == "__main__":
     app.run()
