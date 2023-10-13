@@ -236,8 +236,8 @@ def contact():
     if request.method == 'POST':
         data = request.form
         send_email(data["name"], data["email"], data["phone"], data["message"])
-        return render_template('contact.html')
-    return render_template('contact.html')
+        return render_template('contact.html', email_sent=True)
+    return render_template('contact.html', email_sent=False)
 
 def send_email(name, email, phone, message):
     email_msg = f"Subject: New Message\n\nName: {name}\nEmail: {email}\nPhone: {phone}\nMessage: {message}"
