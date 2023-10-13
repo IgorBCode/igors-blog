@@ -10,6 +10,7 @@ from werkzeug.exceptions import Forbidden
 from flask_login import LoginManager, UserMixin, login_user, login_required, current_user, logout_user
 from forms import CreatePostForm, RegisterUserFrom, LoginForm, CommentForm
 from flask_gravatar import Gravatar
+import smtplib
 import os
 
 
@@ -232,8 +233,18 @@ def delete_post(post_id):
 
 @app.route('/contact')
 def contact():
+    if request.method == 'POST':
+        data = request.form
+        send_email(data["name"], data["email"], data["phone"], data["message"])
+        return render_template('contact.html')
     return render_template('contact.html')
 
+def send_email(name, email, phone, message):
+    email_msg = f"Subject: New Message\n\nName: {name}\nEmail: {email}\nPhone: {phone}\nMessage: {message}"
+    with smtplib.SMTP("smtp.gmail.com") as connection:
+        connection.starttls()
+        connection.login(os.environ.get('EMAIL_ADDY'), os.environ.get('EMAIL_PASS'))
+        connection.sendmail(os.environ.get('EMAIL_ADDY'), os.environ.get('EMAIL_ADDY'), email_msg)
 
 if __name__ == "__main__":
     app.run()
