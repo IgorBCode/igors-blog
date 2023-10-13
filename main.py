@@ -231,7 +231,7 @@ def delete_post(post_id):
 
     return redirect(url_for('get_all_posts'))
 
-@app.route('/contact')
+@app.route('/contact', methods=['GET', 'POST'])
 def contact():
     if request.method == 'POST':
         data = request.form
