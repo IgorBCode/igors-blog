@@ -234,17 +234,20 @@ def delete_post(post_id):
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
     if request.method == 'POST':
-        data = request.form
+        name = request.get('name')
+        email = request.get('email')
+        phone = request.get('phone')
+        message = phone = request.get('message')
         send_email(data["name"], data["email"], data["phone"], data["message"])
         return render_template('contact.html', email_sent=True)
     return render_template('contact.html', email_sent=False)
 
 def send_email(name, email, phone, message):
     email_msg = f"Subject: New Message\n\nName: {name}\nEmail: {email}\nPhone: {phone}\nMessage: {message}"
-    with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
+    with smtplib.SMTP("smtp.gmail.com") as connection:
         connection.starttls()
         connection.login(os.environ.get('EMAIL_ADDY'), os.environ.get('EMAIL_PASS'))
-        connection.sendmail(from_addr=os.environ.get('EMAIL_ADDY'), to_addr=os.environ.get('EMAIL_ADDY'), msg=email_msg)
+        connection.sendmail(os.environ.get('EMAIL_ADDY'), os.environ.get('EMAIL_ADDY'), email_msg)
 
 if __name__ == "__main__":
     app.run()
